@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -x
+if [ -d "$CI_PROJECT_DIR/.git" ]; then
+	git -C "$CI_PROJECT_DIR" config --local -l --name-only | grep lfs | grep .access | xargs -r -n 1 git -C "$CI_PROJECT_DIR" config --unset
+fi
